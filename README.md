@@ -1,5 +1,7 @@
 # 🛍️ Customer Analytics & Recommendation Platform
 
+![CI](https://github.com/ajay1018/customer-analytics-recommendation-platform/actions/workflows/ci.yml/badge.svg?branch=main&cache=1761437646)
+
 Completed project that ingests customer & transaction data, computes KPIs, and produces **naive recommendations** (popularity & segment affinity). Clean DE structure, diagrams, and a dashboard image.
 
 ---
