@@ -1,0 +1,5 @@
+customer_id,segment,signup_date
+C001,Consumer,2024-01-10
+C002,SMB,2024-02-15
+C003,Enterprise,2024-02-20
+C004,Consumer,2024-03-05
