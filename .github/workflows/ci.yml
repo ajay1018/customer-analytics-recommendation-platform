@@ -1,0 +1,32 @@
+name: CI (light)
+on:
+  push:
+  pull_request:
+jobs:
+  pipeline-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install minimal deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
+      - name: Run ingest
+        run: python src/ingest/ingest_local.py
+      - name: Run transform
+        run: python src/transform/transform_metrics.py
+      - name: Run recommend
+        run: python src/recommend/recommend_basic.py
+      - name: Verify outputs
+        run: |
+          test -f data/processed/events_enriched.csv
+          test -f data/processed/kpi_by_segment.csv
+          test -f data/processed/kpi_by_category.csv
+          test -f data/processed/top_products.csv
+          test -f data/processed/recommendations/top_products.json
+          test -f data/processed/recommendations/top_categories.json
+          test -f data/processed/recommendations/top_category_per_segment.json
+          echo '✅ outputs found.'
